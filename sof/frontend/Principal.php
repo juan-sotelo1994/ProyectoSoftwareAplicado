@@ -44,8 +44,7 @@
               </li>
             </ul>
           </li>
-          <li><a href="#">Crear tu Cuenta</a></li>
-          <li><a href="#">Ingresa</a></li>
+          <li><a href="login.php">Ingresa</a></li>
         </ul>
       </div>
       <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
