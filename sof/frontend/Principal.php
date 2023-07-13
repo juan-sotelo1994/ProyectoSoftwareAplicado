@@ -24,15 +24,15 @@
             </ul>
           </li>
           <li>
-            <a href="#" class="desktop-link">Services</a>
+            <a href="#" class="desktop-link">Servicios</a>
             <input type="checkbox" id="show-services">
             <label for="show-services">Services</label>
             <ul>
-              <li><a href="#">Drop Menu 1</a></li>
-              <li><a href="#">Drop Menu 2</a></li>
+              <li><a href="#">Que ofrecemos</a></li>
+              <li><a href="#">marica</a></li>
               <li><a href="#">Drop Menu 3</a></li>
               <li>
-                <a href="#" class="desktop-link">More Items</a>
+                <a href="#" class="desktop-link">More Item</a>
                 <input type="checkbox" id="show-items">
                 <label for="show-items">More Items</label>
                 <ul>
