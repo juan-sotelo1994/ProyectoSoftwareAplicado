@@ -15,7 +15,7 @@
           <li>
             <a href="categoria.php" class="desktop-link">Categorias</a>
             <input type="checkbox" id="show-features">
-            <label for="show-features">Features</label>
+            <label for="show-features">Categoria</label>
             <ul>
               <li><a href="#">Drop Menu 1</a></li>
               <li><a href="#">Drop Menu 2</a></li>
@@ -23,6 +23,7 @@
               <li><a href="#">Drop Menu 4</a></li>
             </ul>
           </li>
+          <li><a href="#">Ofertas</a></li>
           <li>
             <a href="#" class="desktop-link">Servicios</a>
             <input type="checkbox" id="show-services">
@@ -43,7 +44,8 @@
               </li>
             </ul>
           </li>
-          <li><a href="#">Feedback</a></li>
+          <li><a href="#">Crear tu Cuenta</a></li>
+          <li><a href="#">Ingresa</a></li>
         </ul>
       </div>
       <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
