@@ -10,7 +10,7 @@
       <div class="content">
       <div class="logo"><a href="#">CodingNepal</a></div>
         <ul class="links">
-          <li><a href="#">Inicio</a></li>
+          <li><a href="Principal.php">Inicio</a></li>
           <li><a href="#">Nosotros</a></li>
           <li>
             <a href="categoria.php" class="desktop-link">Categorias</a>
