@@ -25,7 +25,7 @@
           </li>
           <li><a href="#">Ofertas</a></li>
           <li>
-            <a href="#" class="desktop-link">Servicios</a>
+            <a href="servicios.php" class="desktop-link">Servicios</a>
             <input type="checkbox" id="show-services">
             <label for="show-services">Services</label>
             <ul>
