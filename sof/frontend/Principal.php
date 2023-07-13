@@ -13,7 +13,7 @@
           <li><a href="#">Inicio</a></li>
           <li><a href="#">Nosotros</a></li>
           <li>
-            <a href="#" class="desktop-link">Categorias</a>
+            <a href="categoria.php" class="desktop-link">Categorias</a>
             <input type="checkbox" id="show-features">
             <label for="show-features">Features</label>
             <ul>
@@ -30,7 +30,7 @@
             <ul>
               <li><a href="#">Que ofrecemos</a></li>
               <li><a href="#">marica</a></li>
-              <li><a href="#">Drop Menu 3</a></li>
+              <li><a href="#">cretino</a></li>
               <li>
                 <a href="#" class="desktop-link">More Item</a>
                 <input type="checkbox" id="show-items">
