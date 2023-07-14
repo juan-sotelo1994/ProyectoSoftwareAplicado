@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vivero el LLano</title>
   <link rel="icon" type="image/png" href="../backend/img/logo.png">
-  <link rel="stylesheet" type="text/css" href="../backend/css/style.css">
+  <link rel="stylesheet" type="text/css" href="../backend/css/login.css">
   <style type="text/css">
  .loader-container{
    
@@ -63,7 +63,7 @@
         <ion-icon name="bag-handle-outline" class="animation"></ion-icon>
     </div>
 </div>
-  <div class="wrapper">
+  <div class="wrappeer">
     <div class="loader"></div>
   </div>
 
