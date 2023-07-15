@@ -1,12 +1,12 @@
 <?php
     ob_start();
      session_start();
+    
+    if(!isset($_SESSION['rol']) || $_SESSION['rol'] != 1){
+    header('location: ../login.php');
 
-     if(isset($_SESSION['rol']) || $_SESSION['rol'] !=1 ){
-        header('location: ../login.php');
-     }
+  }
 ?>
-
 <?php if(isset($_SESSION['id'])) { ?>
 <!DOCTYPE html>
 <html lang="es">
