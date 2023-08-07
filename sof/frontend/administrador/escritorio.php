@@ -136,7 +136,7 @@
                     <li>
                        <a href="../clientes/mostrar.php">
                             <span class="las la-user-friends"></span>
-                            <small>Clientes</small>
+                            <small>Empleados</small>
                         </a>
                     </li>
                     <li>
@@ -433,7 +433,7 @@ $(document).ready(function() {
     $('#example').DataTable( {
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+             'excel', 'pdf', 'print'
         ]
     } );
 } );
