@@ -1,20 +1,20 @@
-<?php 
+ <?php 
 session_start();
     if (isset($_SESSION['id'])){
         header('Location: administrador/escritorio.php');
     }
 include_once '../backend/php/login.php'
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Al Ferretero</title>
+  <title>Ferreteria Al Ferretero</title>
   <link rel="icon" type="image/png" href="../backend/img/logo.png">
-  <link rel="stylesheet" type="text/css" href="../backend/css/login.css">
+  <link rel="stylesheet" type="text/css" href="../backend/css/style.css">
   <style type="text/css">
  .loader-container{
    
@@ -71,15 +71,15 @@ include_once '../backend/php/login.php'
         <ion-icon name="bag-handle-outline" class="animation"></ion-icon>
     </div>
 </div>
-  <div class="wrappeer">
+  <div class="wrapper">
     <div class="loader"></div>
   </div>
 
     <div class="split-sceen">
       <div class="left">
         <section class="copy">
-          <h1>Vivero el Llano</h1>
-          <p>Tu mejor inventario para tu almacen</p>
+          <h1>Ferreteria Al Ferretero</h1>
+          <p>Tu mejor aliado al alcance</p>
           
         </section>
       </div>
