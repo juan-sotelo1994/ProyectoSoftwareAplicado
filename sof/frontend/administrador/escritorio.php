@@ -330,7 +330,7 @@
 
                 <div class="records table-responsive">
                      <div class="record-header">
-                        <h1>Clientes nuevos</h1>
+                        <h1>Empleados nuevos</h1>
                     </div>
                     <div>
                         <?php 
@@ -348,7 +348,7 @@ if($sentencia){
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th><span class="las la-sort"></span> CLIENTES</th>
+                                    <th><span class="las la-sort"></span> EMPLEADOS</th>
                                     <th><span class="las la-sort"></span> TELEFONO</th>
                                     <th><span class="las la-sort"></span> ESTADO</th>
                                     
