@@ -8,7 +8,7 @@ if(!isset($_SESSION))
 define('dbhost', 'localhost');
 define('dbuser', 'root');
 define('dbpass', '');
-define('dbname', 'computer_advance');
+define('dbname', 'software');
 
 // Connecting database
 try {
