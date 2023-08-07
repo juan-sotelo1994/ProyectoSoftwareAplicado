@@ -118,7 +118,7 @@
                         </a>
                     </li>
                     <li>
-                       <a href="../clientes/mostrar.php">
+                       <a href="../empleados/mostrar.php">
                             <span class="las la-user-friends"></span>
                             <small>Empleados</small>
                         </a>

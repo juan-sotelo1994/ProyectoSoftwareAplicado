@@ -81,6 +81,7 @@
    <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
         <div class="side-header">
+            
         </div>
         
         <div class="side-content">
@@ -111,13 +112,13 @@
                         </a>
                     </li>
                     <li>
-                       <a href="../accesos/mostrar.php" class="active">
+                       <a href="../accesos/mostrar.php">
                             <span class="las la-user-friends"></span>
                             <small>Accesos</small>
                         </a>
                     </li>
                     <li>
-                       <a href="../empleados/mostrar.php">
+                       <a href="../empleados/mostrar.php" class="active">
                             <span class="las la-user-friends"></span>
                             <small>Empleados</small>
                         </a>
@@ -177,81 +178,69 @@
             
             <div class="page-header">
                 <h1>Bienvenido <?php echo '<strong>'.$_SESSION['nombre'].'</strong>'; ?></h1>
-                <small>Home / Accesos</small>
+                <small>Home / Empleados / Actualizar</small>
             </div>
             
             <div class="page-content">
-            
-            <div class="records table-responsive">
-                    
-                    <div>
-                        <?php 
+            <?php 
 require '../../backend/config/Conexion.php';
-$sentencia = $connect->prepare("SELECT * FROM usuarios ORDER BY id DESC;");
+ $id = $_GET['id'];
+ $sentencia = $connect->prepare("SELECT * FROM clientes  WHERE idcli= '$id';");
  $sentencia->execute();
+
 $data =  array();
 if($sentencia){
   while($r = $sentencia->fetchObject()){
     $data[] = $r;
   }
 }
-     ?>
-     <?php if(count($data)>0):?>
-                        <table width="100%" id="example">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th><span class="las la-sort"></span>Nombre</th>
-                                    <th><span class="las la-sort"></span>Estado</th>
-                                 
-                                    <th><span class="las la-sort"></span>Acciones</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach($data as $d):?>
-                                <tr>
-                                    <td><?php echo $d->id ?></td>
-                                    <td>
-                                        <div class="client">
-                                           
-                                            <div class="client-info">
-                                                <h4><?php echo $d->nombre ?></h4>
-                                                <small><?php echo $d->username ?></small>
-                                               
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td data-title="Estado">
-    
-                        <label class="switch">
-                          <input type="checkbox" id="<?=$d->id?>" value="<?=$d->state ?>" <?=$d->state == '1' ? 'checked' : '' ;?>/> 
+   ?>
+   <?php if(count($data)>0):?>
+        <?php foreach($data as $d):?>
+<form action="" enctype="multipart/form-data" method="POST"  autocomplete="off">
+  <div class="containerss">
+    <h1>Actualizar a los empleado</h1>
+    <div class="alert-danger">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Importante!</strong> Es importante rellenar los campos con &nbsp;<span class="badge-warning">*</span>
+</div>
+    <hr>
+    <br>
 
-                          <span class="slider"></span>
-                        </label>
-                        </td>
-                                   
-                                    <td>
-                                       <a title="Actualizar" href="../accesos/editar.php?id=<?php echo $d->id ?>" class="fa fa-pencil tooltip"></a>
+    <label for="psw"><b>Tipo de documento</b></label><span class="badge-warning">*</span>
+    <select required name="tipcl">
+        <option value="<?php echo $d->tipd; ?>"><?php echo $d->tipd; ?></option>
+        <option>------------Seleccione-----------------</option>
+        <option value="dni">DNI</option>
+    </select>
 
-                                       <a title="Cambiar contraseña" href="../accesos/cambiar.php?id=<?php echo $d->id ?>" class="fa fa-key tooltip"></a>
-                                     
-                                    </td>
-                                   
-                                </tr>
-                                 <?php endforeach; ?>
-                                
-                            </tbody>
-                        </table>
-                          <?php else:?>
-                           <div class="alert">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-      <strong>Danger!</strong> No hay datos.
-    </div>
+    <label for="email"><b>Número del documento</b></label><span class="badge-warning">*</span>
+    <input type="text" value="<?php echo $d->nudoc; ?>" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="ejm: 77656756" name="numcl"  required>
+    <label for="email"><b>Nombre del empleado</b></label>
+    <input type="text" name="namcl" value="<?php echo $d->nocl; ?>"  placeholder="ejm: jjalver">
+
+    <label for="email"><b>Apellido del empleado</b></label>
+    <input type="text" name="apecl" value="<?php echo $d->apcl; ?>" placeholder="ejm: zapata">
+
+     <label for="email"><b>Teléfono celular del empleado</b></label><span class="badge-warning">*</span>
+    <input type="text" value="<?php echo $d->telfcl; ?>" maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="ejm: 99898787" name="telcl"  required>
+
+  
+    <label for="email"><b>Nombre del usuario empleado</b></label><span class="badge-warning">*</span>
+    <input type="text" value="<?php echo $d->username; ?>" placeholder="ejm: jjalver" name="usrcl"  required>
+    <input type="hidden" name="clid" value="<?php echo $d->idcli; ?>">
+
+    <hr>
+   
+    <button type="submit" name="upd_customer" class="registerbtn">Guardar</button>
+  </div>
+  
+</form>
+ <?php endforeach; ?>
+  
+    <?php else:?>
+      <p class="alert alert-warning">No hay datos</p>
     <?php endif; ?>
-                    </div>
-
-                </div>
             
             </div>
             
@@ -259,37 +248,21 @@ if($sentencia){
         
     </div>
     <script src="../../backend/js/jquery.min.js"></script>
-    <!-- Data Tables -->
-    <script type="text/javascript" src="../../backend/js/datatable.js"></script>
-    <script type="text/javascript" src="../../backend/js/datatablebuttons.js"></script>
-    <script type="text/javascript" src="../../backend/js/jszip.js"></script>
-    <script type="text/javascript" src="../../backend/js/pdfmake.js"></script>
-    <script type="text/javascript" src="../../backend/js/vfs_fonts.js"></script>
-    <script type="text/javascript" src="../../backend/js/buttonshtml5.js"></script>
-    <script type="text/javascript" src="../../backend/js/buttonsprint.js"></script>
-    <script type="text/javascript">
-$(document).ready(function() {
-    $('#example').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-    </script>
+   
     <script type="text/javascript">
         $(window).on("load",function(){
             $(".load_animation").fadeOut(1000);
         });
     </script>
 
-     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <?php include_once '../../backend/php/delete_category.php' ?>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <?php include_once '../../backend/php/upd_customer.php' ?>
+    <script type="text/javascript" src="../../backend/js/reenvio.js"></script>
 </body>
 </html>
 
 <?php }else{ 
     header('Location: ../login.php');
- } ?>   
+ } ?>

@@ -81,6 +81,7 @@
    <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
         <div class="side-header">
+            
         </div>
         
         <div class="side-content">
@@ -111,13 +112,13 @@
                         </a>
                     </li>
                     <li>
-                       <a href="../accesos/mostrar.php" class="active">
+                       <a href="../accesos/mostrar.php">
                             <span class="las la-user-friends"></span>
                             <small>Accesos</small>
                         </a>
                     </li>
                     <li>
-                       <a href="../empleados/mostrar.php">
+                       <a href="../empleados/mostrar.php" class="active">
                             <span class="las la-user-friends"></span>
                             <small>Empleados</small>
                         </a>
@@ -177,17 +178,22 @@
             
             <div class="page-header">
                 <h1>Bienvenido <?php echo '<strong>'.$_SESSION['nombre'].'</strong>'; ?></h1>
-                <small>Home / Accesos</small>
+                <small>Home / Empleados</small>
             </div>
             
             <div class="page-content">
             
             <div class="records table-responsive">
-                    
+                     <div class="record-header">
+                        <div class="add">
+                          
+                            <button style="cursor: pointer;" onclick="location.href='nuevo.php'">Nuevo</button>
+                        </div>
+                    </div>
                     <div>
                         <?php 
 require '../../backend/config/Conexion.php';
-$sentencia = $connect->prepare("SELECT * FROM usuarios ORDER BY id DESC;");
+$sentencia = $connect->prepare("SELECT * FROM clientes ORDER BY idcli DESC;");
  $sentencia->execute();
 $data =  array();
 if($sentencia){
@@ -201,7 +207,7 @@ if($sentencia){
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th><span class="las la-sort"></span>Nombre</th>
+                                    <th><span class="las la-sort"></span>Clientes</th>
                                     <th><span class="las la-sort"></span>Estado</th>
                                  
                                     <th><span class="las la-sort"></span>Acciones</th>
@@ -211,31 +217,43 @@ if($sentencia){
                             <tbody>
                                 <?php foreach($data as $d):?>
                                 <tr>
-                                    <td><?php echo $d->id ?></td>
+                                    <td><?php echo $d->idcli ?></td>
                                     <td>
                                         <div class="client">
                                            
                                             <div class="client-info">
-                                                <h4><?php echo $d->nombre ?></h4>
-                                                <small><?php echo $d->username ?></small>
-                                               
+                                                <h4><?php echo $d->nocl ?>&nbsp;<?php echo $d->apcl ?></h4>
+                                                <small><?php echo $d->nudoc ?></small>
                                             </div>
                                         </div>
                                     </td>
                                     <td data-title="Estado">
     
                         <label class="switch">
-                          <input type="checkbox" id="<?=$d->id?>" value="<?=$d->state ?>" <?=$d->state == '1' ? 'checked' : '' ;?>/> 
+                          <input type="checkbox" id="<?=$d->idcli?>" value="<?=$d->state ?>" <?=$d->state == '1' ? 'checked' : '' ;?>/> 
 
                           <span class="slider"></span>
                         </label>
                         </td>
                                    
                                     <td>
-                                       <a title="Actualizar" href="../accesos/editar.php?id=<?php echo $d->id ?>" class="fa fa-pencil tooltip"></a>
+                                       <a title="Actualizar" href="../clientes/editar.php?id=<?php echo $d->idcli ?>" class="fa fa-pencil tooltip"></a>
+                                      <?php 
+                                if ($d->rol == '2') {
+                                    // code...
+                echo '<a title="Cambiar contraseña"  href="../clientes/password.php?id='.$d->idcli.'" class="fa fa-key"></a>';
+                                }else {
+                                    echo '<a title="Crear perfil" href="../clientes/crear.php?id='.$d->idcli.'" class="fa fa-user-plus"></a>';
+                                }
 
-                                       <a title="Cambiar contraseña" href="../accesos/cambiar.php?id=<?php echo $d->id ?>" class="fa fa-key tooltip"></a>
-                                     
+                             ?>
+                                       
+
+                                     <form  onsubmit="return confirm('Realmente desea eliminar el registro?');" method='POST' action='<?php $_SERVER['PHP_SELF'] ?>'>
+<input type='hidden' name='idcli' value="<?php echo  $d->idcli; ?>">
+
+<button name='delete_customer' style="cursor: pointer;" class="fa fa-trash"></button>
+</form> 
                                     </td>
                                    
                                 </tr>
@@ -286,10 +304,10 @@ $(document).ready(function() {
      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <?php include_once '../../backend/php/delete_category.php' ?>
+    <?php include_once '../../backend/php/delete_customer.php' ?>
 </body>
 </html>
 
 <?php }else{ 
     header('Location: ../login.php');
- } ?>   
+ } ?>
