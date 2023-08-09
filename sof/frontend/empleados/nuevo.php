@@ -196,7 +196,7 @@
     <label for="psw"><b>Tipo de documento</b></label><span class="badge-warning">*</span>
     <select required name="tipcl">
         <option>Seleccione</option>
-        <option value="dni">DNI</option>
+        <option value="dni">Cedula de Ciudadania</option>
     </select>
 
     <label for="email"><b>Número del documento</b></label><span class="badge-warning">*</span>
